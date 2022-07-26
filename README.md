@@ -3,9 +3,12 @@
 ```bash
 $ git clone https://github.com/AtsuhikoYamada/iwtsys.git
 $ cd iwtsys
+------- for Linux
 $ make create-project # Install Laravel project
 $ make composer-install
 $ make npm-install
+------- for Windows
+> create-project.bat
 ```
 
 ## Share Image
@@ -24,7 +27,10 @@ $ docker save a2ymd/iwt-web >iwt-web.tar
 $ git clone git@github.com:iwatatool/prodplan.git
 $ sudo cp -rfp prodplan/toglon/* iwtsys/backend/
 $ cd iwtsys
+------- for Linux
 $ make chmod
+------- for Windows
+> laravel_chmod.bat
 ```
 
 ## Database Update

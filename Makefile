@@ -14,8 +14,8 @@ create-project:
 fresh:
 	docker-compose exec web php artisan migrate:fresh --seed
 composer-install:
-	sudo cp ./docker/php/composer.json ./backend/
-	sudo cp ./docker/php/composer.lock ./backend/
+	docker-compose cp ./docker/php/composer.json web:/work/backend/
+	docker-compose cp ./docker/php/composer.lock web:/work/backend/
 	docker-compose exec web composer install
 stop:
 	docker-compose stop
@@ -34,8 +34,8 @@ log-db:
 web:
 	docker-compose exec web bash
 npm-install:
-	sudo cp ./docker/php/package.json ./backend/
-	sudo cp ./docker/php/package-lock.json ./backend/
+	docker-compose cp ./docker/php/package.json web:/work/backend/
+	docker-compose cp ./docker/php/package-lock.json web:/work/backend/
 	docker-compose exec web npm install
 db:
 	docker-compose exec db bash
@@ -44,6 +44,6 @@ sql:
 mysql:
 	mysql -u root -ptebasaki -h 127.0.0.1
 chmod:
-	sudo chmod 777 ./backend/storage/logs
-	sudo chmod 777 ./backend/storage/framework/sessions
-	sudo chmod 777 ./backend/storage/framework/views
+	docker-compose exec web chmod 777 /work/backend/storage/logs
+	docker-compose exec web chmod 777 /work/backend/storage/framework/sessions
+	docker-compose exec web chmod 777 /work/backend/storage/framework/views
