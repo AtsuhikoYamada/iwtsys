@@ -1,7 +1,7 @@
 ## Create Environment
 
 ```bash
-$ git clone git@github.com:AtsuhikoYamada/iwtsys.git
+$ git clone https://github.com/AtsuhikoYamada/iwtsys.git
 $ cd iwtsys
 $ make create-project # Install Laravel project
 $ make composer-install
