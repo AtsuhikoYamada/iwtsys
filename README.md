@@ -1,41 +1,23 @@
-## Create Environment
+## Usage
 
 ```bash
-$ git clone https://github.com/AtsuhikoYamada/iwtsys.git
+$ git clone ssh://git@github.com/AtsuhikoYamada/iwtsys.git
 $ cd iwtsys
-------- for Linux
-$ make create-project # Install Laravel project
-$ make composer-install
-$ make npm-install
-------- for Windows
-> create-project.bat
-```
-
-## Share Image
-
-```bash
-$ docker commit <container_id> a2ymd/iwt-web
-$ docker login
-$ docker push a2ymd/iwt-web
-$ docker save a2ymd/iwt-web >iwt-web.tar
-
-```
-
-## Program Update
-
-```bash
+-------- for Linux
+$ ./create_project.sh
+-------- for Windows
+> create_project.bat
+--------
+$ cd ..
 $ git clone git@github.com:iwatatool/prodplan.git
 $ sudo cp -rfp prodplan/toglon/* iwtsys/backend/
 $ cd iwtsys
-------- for Linux
-$ make chmod
-------- for Windows
+-------- for Linux
+$ ./laravel_chmod.sh
+-------- for Windows
 > laravel_chmod.bat
-```
-
-## Database Update
-```bash
-$ mysql -u root -pROOTPASSWORD -h 127.0.0.1 
+--------
+$ mysql -u root -pXXXX -h 127.0.0.1 # use tisc3; source /home/xxx/tisc3.sql
 ```
 
 ## Container structure
@@ -48,14 +30,12 @@ $ mysql -u root -pROOTPASSWORD -h 127.0.0.1
 ### web container
 
 - Base image
-  - [php](https://hub.docker.com/_/php):7.4-apache-buster
-  - [composer](https://hub.docker.com/_/composer):2.0
-  - [node](https://hub.docker.com/_/node):node:14-buster
+  - [iwt-web](https://hub.docker.com/a2ymd):latest
 
 ### db container
 
 - Base image
-  - [mariadb](https://hub.docker.com/_/mariadb):10.8
+  - [iwt-db](https://hub.docker.com/a2ymd):latest
 
 #### Persistent MariaDB Storage
 
@@ -63,7 +43,7 @@ By default, the [named volume](https://docs.docker.com/compose/compose-file/#vol
 If you want to delete MariaDB data intentionally, execute the following command.
 
 ```bash
-$ docker-compose down -v && docker-compose up
+$ docker compose down -v && docker compose up -d
 ```
 
 
