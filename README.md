@@ -1,41 +1,65 @@
 ## Usage
 
+## Create Development Environment for Linux
 ```bash
+$ git clone ssh://git@github.com/iwatatool/prodplan.git
+$ sudo rm -rf prodplan/toglon      # DELETE prodplan/toglon
 $ git clone ssh://git@github.com/AtsuhikoYamada/iwtsys.git
 $ cd iwtsys
--------- for Linux
+$ vi .env    # If you need modify
+$ ./dockerup.sh
 $ ./create_project.sh
--------- for Windows
-> create_project.bat
---------
-$ cd ..
-$ git clone git@github.com:iwatatool/prodplan.git
-$ sudo cp -rfp prodplan/toglon/* iwtsys/backend/
-$ cd iwtsys
--------- for Linux
+$ cd ../prodplan
+$ sudo chown -R <user>.<group> toglon
+$ git checkout toglon
+$ cd ../iwtsys
 $ ./laravel_chmod.sh
--------- for Windows
-> laravel_chmod.bat
---------
 $ mysql -u root -pXXXX -h 127.0.0.1 # use tisc3; source /home/xxx/tisc3.sql
+```
+
+## Create Development Environment for Windows
+```bash
+> git clone ssh://git@github.com/iwatatool/prodplan.git
+> rmdir /s prodplan/toglon         # DELETE prodplan/toglon
+> git clone ssh://git@github.com/AtsuhikoYamada/iwtsys.git
+> cd iwtsys
+> notepad .env   # If you need modify
+> dockerup.bat
+> create_project.bat
+> cd ../prodplan
+> git checkout toglon
+> cd ../iwtsys
+> laravel_chmod.bat
+> mysql -u root -pXXXX -h 127.0.0.1 # use tisc3; source /home/xxx/tisc3.sql
+```
+
+## Database Update
+```bash
+$ mysql -u root -pROOTPASSWORD -h 127.0.0.1 
 ```
 
 ## Container structure
 
 ```bash
 ├── web
+├── phpmyadmin
 └── db
 ```
 
 ### web container
 
 - Base image
-  - [iwt-web](https://hub.docker.com/a2ymd):latest
+  - [iwt-web](https://hub.docker.com/r/a2ymd):latest
 
 ### db container
 
 - Base image
-  - [iwt-db](https://hub.docker.com/a2ymd):latest
+  - [iwt-db](https://hub.docker.com/r/a2ymd):latest
+
+### phpmyadmin container
+
+- Base image
+  - [phpmyadmin](https://hub.docker.com/_/phpmyadmin):latest
 
 #### Persistent MariaDB Storage
 
