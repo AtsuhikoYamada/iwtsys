@@ -20,7 +20,9 @@ $ mysql -u root -pXXXX -h 127.0.0.1 # use tisc3; source /home/xxx/tisc3.sql
 ## Create Development Environment for Windows
 ```bash
 > git clone ssh://git@github.com/iwatatool/prodplan.git
-> rmdir /s prodplan/toglon         # DELETE prodplan/toglon
+> cd prodplan         # DELETE prodplan/toglon
+> rmdir /s toglon     # DELETE prodplan/toglon
+> cd ..
 > git clone ssh://git@github.com/AtsuhikoYamada/iwtsys.git
 > cd iwtsys
 > notepad .env   # If you need modify
