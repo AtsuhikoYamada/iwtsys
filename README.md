@@ -2,37 +2,14 @@
 
 ## Create Development Environment for Linux
 ```bash
-$ git clone ssh://git@github.com/iwatatool/prodplan.git
-$ sudo rm -rf prodplan/toglon      # DELETE prodplan/toglon
 $ git clone ssh://git@github.com/AtsuhikoYamada/iwtsys.git
 $ cd iwtsys
 $ vi .env    # If you need modify
 $ ./dockerup.sh
 $ ./create_project.sh
-$ cd ../prodplan
-$ sudo chown -R <user>.<group> toglon
-$ git checkout toglon
-$ cd ../iwtsys
+$ sudo chown -R <user>.<group> larahome
 $ ./laravel_chmod.sh
 $ mysql -u root -pXXXX -h 127.0.0.1 # use tisc3; source /home/xxx/tisc3.sql
-```
-
-## Create Development Environment for Windows
-```bash
-> git clone ssh://git@github.com/iwatatool/prodplan.git
-> cd prodplan         # DELETE prodplan/toglon
-> rmdir /s toglon     # DELETE prodplan/toglon
-> cd ..
-> git clone ssh://git@github.com/AtsuhikoYamada/iwtsys.git
-> cd iwtsys
-> notepad .env   # If you need modify
-> dockerup.bat
-> create_project.bat
-> cd ../prodplan
-> git checkout toglon
-> cd ../iwtsys
-> laravel_chmod.bat
-> mysql -u root -pXXXX -h 127.0.0.1 # use tisc3; source /home/xxx/tisc3.sql
 ```
 
 ## Database Update
